@@ -1,0 +1,69 @@
+### req : 
+- install php
+- download lumen
+- copy lumen to xampp/htdocs
+
+
+### run : 
+1. Pindah ke direktori
+```
+$ cd xampp/htdocs/apilumen/php
+```
+2. Start server 
+```
+$ php -S localhost:88 -t public
+```
+
+### config environment variable (xampp/htdocs/apilumen/.env)
+```
+APP_ENV=local
+
+APP_DEBUG=true
+
+APP_KEY=
+APP_TIMEZONE=UTC
+
+
+
+DB_CONNECTION=mysql
+
+DB_HOST=127.0.0.1
+
+DB_PORT=3306
+
+DB_DATABASE=homestead
+
+DB_USERNAME=homestead
+
+DB_PASSWORD=secret
+
+
+
+CACHE_DRIVER=file
+
+QUEUE_DRIVER=sync
+
+```
+
+### mengaktifkan facades
+hilangkan komen pada baris ke 26 (xampp/htdocs/apilumen/bootstrap/app.php)
+```
+$app->withFacades();
+```
+
+### migrasi database
+1. membuat skrip migrasi -> membuar tabel
+```
+php artisan make:migration create_books_table --create="books"
+```
+maka akan dibuat file migrasi di xampp/htdocs.apilumen/database/migrations.
+kemudian dapat diedit di file migrasi tersebut sesuai kebutuhan.
+2. migrasi skrip tersebut
+```
+php artisan migrate
+```
+
+### dev : crud
+1. buat controller (xampp/htdocs/apilumen/app/Http/Controllers/BookController.php)
+2. config routes (xampp/htdocs/apilumen/routes/web.php)
+
